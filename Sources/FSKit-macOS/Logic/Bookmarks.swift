@@ -41,6 +41,16 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 	
 	var data: [URL: Data] = [URL: Data]()
 	
+	/// Computed property returning number of bookmarks
+	public var count: Int {
+		return self.data.count
+	}
+	
+	/// Computed property returning bookmarks
+	public var dataCopy: Int {
+		return self.data
+	}
+	
 	/// Function to persist access permissions
 	public func saveToBookmark(url: URL) {
 		do {
