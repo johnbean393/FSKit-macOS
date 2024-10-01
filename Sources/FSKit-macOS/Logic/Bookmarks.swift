@@ -98,18 +98,26 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 				data: [URL: Data]()
 			)
 		}
-		if let bookmarks = try? NSKeyedUnarchiver.unarchivedObject(
-			ofClass: Self.self,
-			from: nsData as Data
-		) {
+		do {
+			let bookmarks = try NSKeyedUnarchiver.unarchivedObject(
+				ofClass: Self.self,
+				from: nsData as Data
+			)
+			guard let bookmarks: Bookmarks = bookmarks else {
+				// Fall back
+				print("Failed to load bookmarks (bookmarks is nil)")
+				return Bookmarks(
+					data: [URL: Data]()
+				)
+			}
 			print("Loaded \(bookmarks.data.count) bookmarks")
 			for bookmark in bookmarks.data {
 				let _ = bookmarks.restorePermissions(url: bookmark.key)
 			}
 			return bookmarks
-		} else {
+		} catch {
 			// Fall back
-			print("Failed to load bookmarks (bookmarks is nil)")
+			print("Failed to load bookmarks (unarchiving threw error: \(error))")
 			return Bookmarks(
 				data: [URL: Data]()
 			)
