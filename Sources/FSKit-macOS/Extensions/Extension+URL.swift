@@ -87,7 +87,11 @@ public extension URL {
 	
 	/// Function to get thumbnail of file
 	@MainActor
-	func thumbnail(size: CGSize, scale: CGFloat, completion: @escaping (CGImage) -> Void) async {
+	func thumbnail(
+		size: CGSize,
+		scale: CGFloat,
+		completion: @escaping (CGImage) -> Void
+	) async {
 		let request = QLThumbnailGenerator.Request(
 			fileAt: self,
 			size: size,

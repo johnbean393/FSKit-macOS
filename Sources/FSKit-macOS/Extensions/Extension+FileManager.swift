@@ -14,11 +14,11 @@ public extension FileManager {
 	/// Function to allow user to select a file or directory
 	@MainActor
 	static func selectFile(
-		rootUrl: URL?,
+		rootUrl: URL? = nil,
 		dialogTitle: String,
 		canSelectFiles: Bool = true,
 		canSelectDirectories: Bool = true,
-		allowedContentTypes: [UTType]?,
+		allowedContentTypes: [UTType]? = nil,
 		showHiddenFiles: Bool = false,
 		allowMultipleSelection: Bool = false,
 		persistPermissions: Bool = true
