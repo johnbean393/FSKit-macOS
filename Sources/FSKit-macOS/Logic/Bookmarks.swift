@@ -111,7 +111,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 			)
 			.first!
 			.appendingPathComponent(
-				"Bookmarks.dict"
+				"bookmarksData.dict"
 			)
 	}
 	
