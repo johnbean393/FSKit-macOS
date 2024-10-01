@@ -16,7 +16,7 @@ import Foundation
 /// Class to persist file access permissions
 final public class Bookmarks: NSObject, NSSecureCoding {
 	
-	@MainActor static let shared: Bookmarks = Bookmarks.loadAndInit()
+	@MainActor static public let shared: Bookmarks = Bookmarks.loadAndInit()
 	
 	static public let supportsSecureCoding: Bool = true
 
