@@ -93,7 +93,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 		let nsData: NSData? = NSData(contentsOf: datastoreUrl)
 		// Fall back if failed
 		guard let nsData: NSData = nsData else {
-			print("Failed to load bookmarks")
+			print("Failed to load bookmarks (nsData is nil)")
 			return Bookmarks(
 				data: [URL: Data]()
 			)
@@ -109,7 +109,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 			return bookmarks
 		} else {
 			// Fall back
-			print("Failed to load bookmarks")
+			print("Failed to load bookmarks (bookmarks is nil)")
 			return Bookmarks(
 				data: [URL: Data]()
 			)
