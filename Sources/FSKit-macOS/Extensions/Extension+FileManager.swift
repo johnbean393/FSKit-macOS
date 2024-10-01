@@ -8,7 +8,7 @@
 import AppKit
 import Foundation
 
-extension FileManager {
+public extension FileManager {
 	
 	/// Function to allow user to select a file or directory
 	@MainActor
@@ -212,7 +212,7 @@ extension FileManager {
 	
 }
 
-extension FileManager {
+public extension FileManager {
 	
 	enum SelectionError: Error {
 		case noSelection

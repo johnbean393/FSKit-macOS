@@ -9,10 +9,10 @@ import Foundation
 import AppKit
 import QuickLookThumbnailing
 
-extension URL {
+public extension URL {
 	
 	/// Computed property returning path to URL
-	public var posixPath: String {
+	var posixPath: String {
 		if #available(macOS 13.0, *) {
 			return self.path(percentEncoded: false)
 		} else {
@@ -21,7 +21,7 @@ extension URL {
 	}
 	
 	/// Function to check if directory contains URL
-	public func dirContains(_ url: URL) -> Bool {
+	func dirContains(_ url: URL) -> Bool {
 		// Perform checks
 		let fileExists: Bool = FileManager.default.fileExists(atPath: url.posixPath)
 		let dirContains: Bool = url.posixPath.hasPrefix(self.posixPath)
@@ -29,7 +29,7 @@ extension URL {
 	}
 	
 	/// Computed property returning items in directory
-	public var contents: [URL]? {
+	var contents: [URL]? {
 		// Return nil if URL is not directory
 		if self.hasDirectoryPath {
 			// Use directory enumerator for better performance
@@ -44,12 +44,12 @@ extension URL {
 	}
 	
 	/// Computed property returning whether a directory is blank
-	public var isEmpty: Bool? {
+	var isEmpty: Bool? {
 		return self.contents?.isEmpty
 	}
 	
 	/// Computed property returning the most recent date of modification for a file
-	public var lastModified: Date? {
+	var lastModified: Date? {
 		do {
 			let attributes: [FileAttributeKey:Any] = try FileManager.default.attributesOfItem(atPath: self.posixPath)
 			return attributes[FileAttributeKey.modificationDate] as? Date
@@ -59,35 +59,35 @@ extension URL {
 	}
 	
 	/// Computed property returning whether file exists
-	public var fileExists: Bool {
+	var fileExists: Bool {
 		return FileManager.default.fileExists(
 			atPath: self.posixPath
 		)
 	}
 	
 	/// Computed property returning name of a volume
-	public var volumeName: String {
+	var volumeName: String {
 		(try? resourceValues(forKeys: [.volumeNameKey]))?.volumeName ?? "null"
 	}
 	
 	/// Computed property returning total capacity of a volume
-	public var volumeTotalCapacity: Int {
+	var volumeTotalCapacity: Int {
 		(try? resourceValues(forKeys: [.volumeTotalCapacityKey]))?.volumeTotalCapacity ?? 0
 	}
 	
 	/// Computed property returning total capacity of a volume for important usage
-	public var volumeAvailableCapacityForImportantUsage: Int64 {
+	var volumeAvailableCapacityForImportantUsage: Int64 {
 		(try? resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey]))?.volumeAvailableCapacityForImportantUsage ?? 0
 	}
 	
 	/// Computed property returning total capacity of a volume for not too important usage
-	public var volumeAvailableCapacityForOpportunisticUsage: Int64 {
+	var volumeAvailableCapacityForOpportunisticUsage: Int64 {
 		(try? resourceValues(forKeys: [.volumeAvailableCapacityForOpportunisticUsageKey]))?.volumeAvailableCapacityForOpportunisticUsage ?? 0
 	}
 	
 	/// Function to get thumbnail of file
 	@MainActor
-	public func thumbnail(size: CGSize, scale: CGFloat, completion: @escaping (CGImage) -> Void) async {
+	func thumbnail(size: CGSize, scale: CGFloat, completion: @escaping (CGImage) -> Void) async {
 		let request = QLThumbnailGenerator.Request(
 			fileAt: self,
 			size: size,

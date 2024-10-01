@@ -14,13 +14,13 @@ import Foundation
 /// <true/>
 
 /// Class to persist file access permissions
-final class Bookmarks: NSObject, NSSecureCoding {
+final public class Bookmarks: NSObject, NSSecureCoding {
 	
 	@MainActor static let shared: Bookmarks = Bookmarks.loadAndInit()
 	
-	static let supportsSecureCoding: Bool = true
+	static public let supportsSecureCoding: Bool = true
 
-	required init?(coder: NSCoder) {
+	required public init?(coder: NSCoder) {
 		self.data = coder.decodeObject(
 			of: [NSDictionary.self, NSData.self, NSURL.self]
 			, forKey: "bookmarksData"
@@ -35,7 +35,7 @@ final class Bookmarks: NSObject, NSSecureCoding {
 		self.save()
 	}
 
-	func encode(with coder: NSCoder) {
+	public func encode(with coder: NSCoder) {
 		coder.encode(self.data, forKey: "bookmarksData")
 	}
 	
