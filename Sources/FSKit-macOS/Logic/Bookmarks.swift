@@ -47,7 +47,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 	}
 	
 	/// Computed property returning bookmarks
-	public var dataCopy: Int {
+	public var dataCopy: [URL: Data] {
 		return self.data
 	}
 	
