@@ -87,6 +87,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 			ofClass: Self.self,
 			from: nsData as Data
 		) {
+			print("Loaded \(bookmarks.data.count) bookmarks")
 			for bookmark in bookmarks.data {
 				let _ = bookmarks.restorePermissions(url: bookmark.key)
 			}
