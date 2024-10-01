@@ -68,7 +68,11 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 			requiringSecureCoding: true
 		) {
 			// Save to disk
-			try? data.write(to: datastoreUrl, options: .atomic)
+			do {
+				try data.write(to: datastoreUrl, options: .atomic)
+			} catch {
+				print("Failed to save permissions to disk")
+			}
 		}
 	}
 	
