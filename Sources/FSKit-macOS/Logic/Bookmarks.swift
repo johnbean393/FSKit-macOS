@@ -74,7 +74,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 		let datastoreUrl: URL = Self.getBookmarkDatastoreUrl()
 		// Convert to raw data
 		if let data: Data = try? NSKeyedArchiver.archivedData(
-			withRootObject: self.data,
+			withRootObject: self,
 			requiringSecureCoding: true
 		) {
 			// Save to disk
