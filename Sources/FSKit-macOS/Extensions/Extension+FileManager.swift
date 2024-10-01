@@ -7,6 +7,7 @@
 
 import AppKit
 import Foundation
+import UniformTypeIdentifiers
 
 public extension FileManager {
 	
@@ -17,6 +18,7 @@ public extension FileManager {
 		dialogTitle: String,
 		canSelectFiles: Bool = true,
 		canSelectDirectories: Bool = true,
+		allowedContentTypes: [UTType]?,
 		showHiddenFiles: Bool = false,
 		allowMultipleSelection: Bool = false,
 		persistPermissions: Bool = true
@@ -34,6 +36,9 @@ public extension FileManager {
 		dialog.canChooseDirectories = canSelectDirectories
 		dialog.showsHiddenFiles = showHiddenFiles
 		dialog.allowsMultipleSelection = allowMultipleSelection
+		if let allowedContentTypes = allowedContentTypes {
+			dialog.allowedContentTypes = allowedContentTypes
+		}
 		// If user clicked OK
 		if dialog.runModal() == .OK {
 			// Persist permissions if requested
