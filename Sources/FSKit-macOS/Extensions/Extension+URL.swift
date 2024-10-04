@@ -126,4 +126,9 @@ public extension URL {
 		}
 	}
 	
+	/// Computed property returning `true` if hidden (invisible) or `false` if not hidden (visible)
+	var isHidden: Bool {
+		return (try? resourceValues(forKeys: [.isHiddenKey]))?.isHidden == true
+	}
+	
 }
