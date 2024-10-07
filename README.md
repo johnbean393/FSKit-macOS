@@ -5,7 +5,7 @@ A Swift Package containing file system utilities for macOS.
 ## Installation
 
 **Requirements**
-- Xcode ≤ 15
+- Xcode ≥ 15
 
 **Swift Package Manager**
 ```
