@@ -167,8 +167,6 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 				let result: Bool = url.startAccessingSecurityScopedResource()
 				if !result {
 					print("Failed to access file \(url.lastPathComponent)")
-				} else {
-					print("Starting access to file \(url.lastPathComponent)")
 				}
 				return result
 			}
