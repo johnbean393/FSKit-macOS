@@ -161,9 +161,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 		}
 		// Start access
 		if let url = restoredUrl {
-			if isStale {
-				print("URL \(url.absoluteString) is stale")
-			} else {
+			if !isStale {
 				let result: Bool = url.startAccessingSecurityScopedResource()
 				if !result {
 					print("Failed to access file \(url.lastPathComponent)")
