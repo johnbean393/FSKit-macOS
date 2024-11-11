@@ -155,7 +155,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 				bookmarkDataIsStale: &isStale
 			)
 		} catch {
-			print("Error restoring bookmark for file \(url.lastPathComponent)")
+//			print("Error restoring bookmark for file \(url.lastPathComponent)")
 			restoredUrl = nil
 			return false
 		}
@@ -164,7 +164,7 @@ final public class Bookmarks: NSObject, NSSecureCoding {
 			if !isStale {
 				let result: Bool = url.startAccessingSecurityScopedResource()
 				if !result {
-					print("Failed to access file \(url.lastPathComponent)")
+//					print("Failed to access file \(url.lastPathComponent)")
 				}
 				return result
 			}
