@@ -97,6 +97,9 @@ public extension FileManager {
 				// If no prompt, and not replacing, return
 				if !replacing {
 					return
+				} else {
+					// If is replacing, delete original copy
+					FileManager.removeItem(at: destination)
 				}
 			}
 		}
