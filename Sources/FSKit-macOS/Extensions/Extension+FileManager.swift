@@ -58,7 +58,7 @@ public extension FileManager {
 		at url: URL,
 		withIntermediateDirectories: Bool = true
 	) {
-		if url.fileExists {
+		if !url.fileExists {
 			try? FileManager.default.createDirectory(
 				at: url,
 				withIntermediateDirectories: true
