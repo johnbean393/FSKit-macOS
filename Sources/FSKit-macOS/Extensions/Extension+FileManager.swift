@@ -38,6 +38,7 @@ public extension FileManager {
 		dialog.allowsMultipleSelection = allowMultipleSelection
 		if let allowedContentTypes = allowedContentTypes {
 			dialog.allowedContentTypes = allowedContentTypes
+			dialog.allowsOtherFileTypes = false
 		}
 		// If user clicked OK
 		if dialog.runModal() == .OK {
